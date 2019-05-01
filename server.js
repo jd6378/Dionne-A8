@@ -57,7 +57,7 @@ function listSongs(req, res)
       writeResult(req, res, {'error' : err});
     else
     {
-      con.query("SELECT * FROM SONG WHERE USER_ID = ? ORDER BY SONG_NAME", [req.session.user.result.id], function (err, result, fields) 
+      con.query("SELECT * FROM GUESS WHERE USER_ID = ? ORDER BY GUESS_NAME", [req.session.user.result.id], function (err, result, fields) 
       {
         if (err) 
           writeResult(req, res, {'error' : err});
@@ -87,13 +87,13 @@ function addSong(req, res)
         writeResult(req, res, {'error' : err});
       else
       {
-        con.query('INSERT INTO SONG (SONG_NAME, USER_ID) VALUES (?, ?)', [req.query.song, req.session.user.result.id], function (err, result, fields) 
+        con.query('INSERT INTO GUESS (GUESS_NAME, USER_ID) VALUES (?, ?)', [req.query.song, req.session.user.result.id], function (err, result, fields) 
         {
           if (err) 
             writeResult(req, res, {'error' : err});
           else
           {
-            con.query("SELECT * FROM SONG WHERE USER_ID = ? ORDER BY SONG_NAME", [req.session.user.result.id], function (err, result, fields) 
+            con.query("SELECT * FROM GUESS WHERE USER_ID = ? ORDER BY GUESS_NAME", [req.session.user.result.id], function (err, result, fields) 
             {
               if (err) 
                 writeResult(req, res, {'error' : err});
@@ -126,13 +126,13 @@ function removeSong(req, res)
         writeResult(req, res, {'error' : err});
       else
       {
-        con.query('DELETE FROM SONG WHERE SONG_NAME = ? AND USER_ID = ?', [req.query.song, req.session.user.result.id], function (err, result, fields) 
+        con.query('DELETE FROM GUESS WHERE GUESS_NAME = ? AND USER_ID = ?', [req.query.song, req.session.user.result.id], function (err, result, fields) 
         {
           if (err) 
             writeResult(req, res, {'error' : err});
           else
           {
-            con.query("SELECT * FROM SONG WHERE USER_ID = ? ORDER BY SONG_NAME", [req.session.user.result.id], function (err, result, fields) 
+            con.query("SELECT * FROM GUESS WHERE USER_ID = ? ORDER BY GUESS_NAME", [req.session.user.result.id], function (err, result, fields) 
             {
               if (err) 
                 writeResult(req, res, {'error' : err});
@@ -161,13 +161,13 @@ function clearSongs(req, res)
       writeResult(req, res, {'error' : err});
     else
     {
-      con.query('DELETE FROM SONG WHERE USER_ID = ?', [req.session.user.result.id], function (err, result, fields) 
+      con.query('DELETE FROM GUESS WHERE USER_ID = ?', [req.session.user.result.id], function (err, result, fields) 
       {
         if (err) 
           writeResult(req, res, {'error' : err});
         else
         {
-          con.query("SELECT * FROM SONG WHERE USER_ID = ? ORDER BY SONG_NAME", [req.session.user.result.id], function (err, result, fields) 
+          con.query("SELECT * FROM GUESS WHERE USER_ID = ? ORDER BY GUESS_NAME", [req.session.user.result.id], function (err, result, fields) 
           {
             if (err) 
               writeResult(req, res, {'error' : err});

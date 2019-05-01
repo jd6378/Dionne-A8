@@ -17,26 +17,67 @@
             {
                 display: none;
             }
+            
+            a, a:hover
+            {
+                color: white;    
+            }
+            
+            .btn-block
+            {
+                background-color: black;
+                border-radius: 0px;
+                border: solid white;
+                padding: 13%;
+                border-bottom: 25px solid white;
+            }
+            
+            .btn-wrong
+            {
+               background-color: red;
+            }
+            
+            .btn-right
+            {
+                background-color: green;
+            }
         </style>
     </head>
     
     <body>
-        <div class="container">
-            <div>
-                <button id='loginBtn' class='btn btn-primary'>Login</button>
-                <button id='registerBtn' class='btn btn-primary'>Register</button>
-                <button id='logoutBtn' class='btn btn-primary'>Logout</button>
-                <p id="msg"></p>
+        <div class="jumbotron jumbotron-fluid mb-0">
+            <div class="container">
+                <h1 class="display-4">Treasure Hunt</h1>
+                <p class="lead">Find the treasure fast!</p>
             </div>
+        </div>        
+        <div class="">
+            <ul class="nav justify-content-start border p-2 bg-dark text-light">
+                <li class="nav-item">
+                    <a href="#" id='addSongBtn' class='nav-link'>Add Song</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" id='clearSongsBtn' class='nav-link'>Clear Songs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" id='loginBtn' class='nav-link'>Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" id='registerBtn' class='nav-link'>Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" id='logoutBtn' class='nav-link'>Logout</a>
+                </li>
+                <li class="nav-item">
+                    <span id="msg"></span>
+                </li>
+            </ul>            
             <div>
-                <button id='addSongBtn' class='btn btn-primary'>Add Song</button>
-                <button id='clearSongsBtn' class='btn btn-primary'>Clear Songs</button>
-            </div>            
-            <div>
-                <ul id='songs' class='list-group'>
-                    
-                </ul>
-            </div>            
+                <div class="row" id="grid"></div>
+                <h6 id="guesses">Guesses: 0</h6>
+            </div>      
+            
+            
         </div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
